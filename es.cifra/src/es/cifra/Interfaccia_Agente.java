@@ -7,6 +7,7 @@ package es.cifra;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -40,10 +41,12 @@ public class Interfaccia_Agente extends JFrame implements ActionListener {
     private JLabel label_mess;
     private JButton button_invia;
     private JButton button_esci;
+    private ButtonGroup button_gruppo;
 
     public Interfaccia_Agente(Secret_Imbox chiamante) {
 
         super("Agente");
+        System.out.println("avviato utente");
         p = new JPanel();
         p.setLayout(null);
 
@@ -65,19 +68,20 @@ public class Interfaccia_Agente extends JFrame implements ActionListener {
         messaggio = new JTextField();
         messaggio.setBounds(100, 150, 100, 40);
 
+        radio_cesare = new JRadioButton("Vigenere");
+        radio_cesare.setBounds(150, 200, 90, 40);
+        radio_cesare.setSelected(true);
+
         radio_vigenere = new JRadioButton("Cesare");
         radio_vigenere.setBounds(30, 200, 90, 40);
 
-        radio_cesare = new JRadioButton("Vigenere");
-        radio_cesare.setBounds(150, 200, 90, 40);
-
         button_esci = new JButton("Esci");
-        button_esci.setBounds(30, 250, 140, 40);
-        
-        button_invia = new JButton("Invia");
-        button_invia.setBounds(90, 250, 140, 40);
-        
+        button_esci.setBounds(30, 250, 100, 40);
 
+        button_invia = new JButton("Invia");
+        button_invia.setBounds(150, 250, 100, 40);
+
+        button_gruppo = new ButtonGroup();
 
         p.add(label_agente);
         p.add(label_chiave);
@@ -89,12 +93,11 @@ public class Interfaccia_Agente extends JFrame implements ActionListener {
         p.add(radio_cesare);
         p.add(button_invia);
         p.add(button_esci);
+        button_gruppo.add(radio_vigenere);
+        button_gruppo.add(radio_cesare);
         p.setBackground(Color.gray);
         add(p);
 
-        // ospita.addActionListener(this);
-        // collegati.addActionListener(this);
-        // esci.addActionListener(this);
         this.setBounds(100, 100, 500, 500);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -103,28 +106,44 @@ public class Interfaccia_Agente extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int valIncremento, valDecremento;
+         System.out.println(e.getSource().toString());
+        int valIncremento, valDecretmento;
         InetAddress ip = null;
         String indirizzoServer;
-/*
+
         //incremento contatore
-        if (esci == e.getSource()) {
+        if (button_esci == e.getSource()) {
             dispose();
         }
-        //decremento contatore
-        if (collegati == e.getSource()) {
 
-            uniscitiGame();
+        if (button_invia == e.getSource()) {
+            invia_Messaggio();
+        }
+
+    }
+
+    private void invia_Messaggio() {
+
+        String messaggio_Completo;
+        String messaggio_Cifrato;
+
+        messaggio_Completo = cod_agente.getText() + ": " + messaggio.getText();
+        if (radio_cesare.isSelected()) {
+            int intero = Integer.parseInt(chiave_cifra.getText());
+            messaggio_Cifrato = Cifratore_Messaggi.cifra_Messaggio_Cesare(messaggio_Completo, intero);
+        } else {
+            messaggio_Cifrato = Cifratore_Messaggi.cifra_Messaggio_Vigenere(messaggio_Completo, chiave_cifra.getText());
+        }
+        try {
+
+            PrintWriter outServer = new PrintWriter(chiamante.s.getOutputStream(), true);
+            outServer.println(messaggio_Cifrato);
+
+        } catch (Exception ex) {
 
         }
 
-        if (ospita == e.getSource()) {
-
-            ospitaGame();
-
-        }
-*/
-
+        System.out.println(messaggio_Cifrato);
     }
 
 }

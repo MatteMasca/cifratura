@@ -36,7 +36,6 @@ public class Secret_Imbox extends JFrame implements ActionListener {
     JTextField indirizzo_Mio;
     JTextField indirizzo_Destinatario;
 
-
     public Secret_Imbox() {
 
         super("Secret Imbox");
@@ -121,10 +120,7 @@ public class Secret_Imbox extends JFrame implements ActionListener {
             ss = new ServerSocket(50000);
             ss.setSoTimeout(30000);
             s = ss.accept();
-
-         
-
-           
+            Interfaccia_Base base = new Interfaccia_Base(this);
 
         } catch (SocketTimeoutException toe) {
             JOptionPane.showMessageDialog(null, "Non si è connesso nessuno");
@@ -140,20 +136,15 @@ public class Secret_Imbox extends JFrame implements ActionListener {
             PrintWriter outServer = new PrintWriter(s.getOutputStream(), true);
             String clienMsg = "Ok:" + indirizzo_Mio.getText();
             outServer.println(clienMsg);
-            //String parolaDaIndovinare = riceviParolaDaIndovinare();
-             Interfaccia_Agente agente = new Interfaccia_Agente(this);
-            
+
+            Interfaccia_Agente agente = new Interfaccia_Agente(this);
+
         } catch (Exception ex) {
 
         }
 
     }
 
-   
-
-           
-
-      
     private void inviaParolaDaIndovinare(String parola) {
         try {
             PrintWriter outServer = new PrintWriter(s.getOutputStream(), true);
@@ -184,4 +175,3 @@ public class Secret_Imbox extends JFrame implements ActionListener {
         return parolaDaIndovinare;
     }
 }
-
