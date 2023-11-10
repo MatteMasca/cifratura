@@ -15,6 +15,7 @@ public class EsCifra {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Secret_Imbox secret_imbox = new Secret_Imbox();
     }
     
 }
