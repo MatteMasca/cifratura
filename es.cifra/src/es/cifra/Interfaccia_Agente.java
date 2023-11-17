@@ -46,7 +46,7 @@ public class Interfaccia_Agente extends JFrame implements ActionListener {
     public Interfaccia_Agente(Secret_Imbox chiamante) {
 
         super("Agente");
-        System.out.println("avviato utente");
+      
         p = new JPanel();
         p.setLayout(null);
 
@@ -76,7 +76,7 @@ public class Interfaccia_Agente extends JFrame implements ActionListener {
         radio_vigenere.setBounds(30, 200, 90, 40);
 
         button_esci = new JButton("Esci");
-        button_esci.setBounds(30, 250, 100, 40);
+        button_esci.setBounds(20, 250, 150, 40);
 
         button_invia = new JButton("Invia");
         button_invia.setBounds(150, 250, 100, 40);
@@ -111,8 +111,7 @@ public class Interfaccia_Agente extends JFrame implements ActionListener {
         InetAddress ip = null;
         String indirizzoServer;
 
-        //incremento contatore
-        if (button_esci == e.getSource()) {
+       if (button_esci == e.getSource()) {
             dispose();
         }
 
@@ -143,7 +142,7 @@ public class Interfaccia_Agente extends JFrame implements ActionListener {
 
         }
 
-        System.out.println(messaggio_Cifrato);
+   
     }
 
 }

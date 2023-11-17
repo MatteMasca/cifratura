@@ -41,6 +41,7 @@ public class Interfaccia_Base extends JFrame implements ActionListener {
     private JLabel label_agente;
     private JLabel label_chiave;
     private JLabel label_mess;
+    private JButton button_esci;
     private ButtonGroup button_gruppo;
     private JComboBox elenco_messaggi;
 
@@ -76,7 +77,11 @@ public class Interfaccia_Base extends JFrame implements ActionListener {
 
         elenco_messaggi = new JComboBox();
         elenco_messaggi.setBounds(30, 300, 140, 40);
+        
+        button_esci = new JButton("Esci");
+        button_esci.setBounds(20, 250, 150, 40);
 
+        p.add(button_esci);
         p.add(label_chiave);
         p.add(chiave_cifra);
         p.add(messaggio);
@@ -102,24 +107,12 @@ public class Interfaccia_Base extends JFrame implements ActionListener {
         int valIncremento, valDecremento;
         InetAddress ip = null;
         String indirizzoServer;
-        /*
+        
         //incremento contatore
-        if (esci == e.getSource()) {
+        if (button_esci == e.getSource()) {
             dispose();
         }
-        //decremento contatore
-        if (collegati == e.getSource()) {
-
-            uniscitiGame();
-
-        }
-
-        if (ospita == e.getSource()) {
-
-            ospitaGame();
-
-        }
-         */
+      
 
     }
 
