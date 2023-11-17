@@ -37,8 +37,10 @@ public class Secret_Imbox extends JFrame implements ActionListener {
     JTextField indirizzo_Destinatario;
 
     public Secret_Imbox() {
-
         super("Secret Imbox");
+        Thread ascolto_Messaggio = new ascolto_Messaggio(this, interfaccia);
+        ascolto_Messaggio.start();
+        
         p = new JPanel();
         p.setLayout(null);
 

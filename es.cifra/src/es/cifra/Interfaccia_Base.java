@@ -31,6 +31,8 @@ public class Interfaccia_Base extends JFrame implements ActionListener {
     public ServerSocket ss;
     public Socket s;
     private Secret_Imbox chiamante;
+    
+     public JComboBox ricevuto_mess;
 
     private JTextField cod_agente;
     private JTextField chiave_cifra;
@@ -44,6 +46,7 @@ public class Interfaccia_Base extends JFrame implements ActionListener {
     private JButton button_esci;
     private ButtonGroup button_gruppo;
     private JComboBox elenco_messaggi;
+  
     
 
     public Interfaccia_Base(Secret_Imbox chiamante) {
@@ -51,8 +54,10 @@ public class Interfaccia_Base extends JFrame implements ActionListener {
         super("Base");
         p = new JPanel();
         p.setLayout(null);
-        Thread ascolta_Messaggio = new Thread();
-
+        Thread ascolto_Messaggio = new Thread();
+        
+         ricevuto_mess = new JComboBox();
+         ricevuto_mess.setBounds(20, 50, 200, 50);
         label_chiave = new JLabel("Chiave");
         label_chiave.setBounds(20, 50, 200, 50);
 
@@ -81,6 +86,8 @@ public class Interfaccia_Base extends JFrame implements ActionListener {
         
         button_esci = new JButton("Esci");
         button_esci.setBounds(20, 250, 250, 40);
+        
+         p.add(ricevuto_mess);
 
         p.add(button_esci);
         p.add(label_chiave);
