@@ -57,7 +57,7 @@ public class Secret_Imbox extends JFrame implements ActionListener {
         collegati.setBounds(20, 150, 150, 40);
 
         esci = new JButton("Esci");
-        esci.setBounds(20, 250, 150, 40);
+        esci.setBounds(20, 250, 100, 40);
 
         gruppoBottoni = new ButtonGroup();
 

@@ -49,6 +49,7 @@ public class Cifratore_Messaggi {
 
         return messDecifrato;
     }
+ 
 
     public static String cifra_Messaggio_Vigenere(String mess, String key) {
 

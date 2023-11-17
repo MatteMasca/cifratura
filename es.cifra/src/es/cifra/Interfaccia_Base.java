@@ -44,6 +44,7 @@ public class Interfaccia_Base extends JFrame implements ActionListener {
     private JButton button_esci;
     private ButtonGroup button_gruppo;
     private JComboBox elenco_messaggi;
+    
 
     public Interfaccia_Base(Secret_Imbox chiamante) {
 
@@ -53,22 +54,22 @@ public class Interfaccia_Base extends JFrame implements ActionListener {
         Thread ascolta_Messaggio = new Thread();
 
         label_chiave = new JLabel("Chiave");
-        label_chiave.setBounds(20, 50, 190, 40);
+        label_chiave.setBounds(20, 50, 200, 50);
 
         chiave_cifra = new JTextField();
-        chiave_cifra.setBounds(100, 50, 100, 40);
+        chiave_cifra.setBounds(80, 50, 100, 50);
 
         radio_vigenere = new JRadioButton("Cesare");
-        radio_vigenere.setBounds(30, 100, 90, 40);
+        radio_vigenere.setBounds(30, 100, 100, 50);
 
         radio_cesare = new JRadioButton("Vigenere");
-        radio_cesare.setBounds(150, 100, 90, 40);
+        radio_cesare.setBounds(150, 100, 100, 50);
 
         label_mess = new JLabel("Messaggio Cifrato");
-        label_mess.setBounds(20, 150, 190, 40);
+        label_mess.setBounds(20, 150, 200, 50);
 
         messaggio = new JTextField();
-        messaggio.setBounds(300, 150, 200, 40);
+        messaggio.setBounds(130, 150, 200, 40);
 
         button_decifra = new JButton("Invia");
         button_decifra.setBounds(30, 250, 140, 40);
@@ -79,7 +80,7 @@ public class Interfaccia_Base extends JFrame implements ActionListener {
         elenco_messaggi.setBounds(30, 300, 140, 40);
         
         button_esci = new JButton("Esci");
-        button_esci.setBounds(20, 250, 150, 40);
+        button_esci.setBounds(20, 250, 250, 40);
 
         p.add(button_esci);
         p.add(label_chiave);
@@ -137,5 +138,5 @@ public class Interfaccia_Base extends JFrame implements ActionListener {
 
         }
     }
-
+   
 }
